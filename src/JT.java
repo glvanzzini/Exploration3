@@ -8,22 +8,21 @@ public class JT {
         long startTime = System.nanoTime();
         int size = Integer.parseInt(args[0]);
         print = Boolean.parseBoolean(args[1]);
-        perm(size);
+        initializeVars(size);
         System.out.println();
         System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime));
     }
 
-    public static void perm(int n) {
-        int[] p   = new int[n];     // permutation
-        int[] pi  = new int[n];     // inverse permutation
-        int[] dir = new int[n];     // direction = +1 or -1
+    public static void initializeVars(int n) {
+        int[] perm1   = new int[n];
+        int[] invPerm2  = new int[n];
+        int[] direction = new int[n];
         for (int i = 0; i < n; i++) {
-            dir[i] = -1;
-            p[i]  = i;
-            pi[i] = i;
+            direction[i] = -1;
+            perm1[i]  = i;
+            invPerm2[i] = i;
         }
-        perm(0, p, pi, dir);
-
+        perm(0, perm1, invPerm2, direction);
 
     }
 
