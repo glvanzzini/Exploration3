@@ -1,7 +1,18 @@
 /**
  * Created by Giampiero on 10/16/2016.
  */
-public class JTP {
+public class JT {
+    private static boolean print = false;
+
+    public static void main(String[] args) {
+        long startTime = System.nanoTime();
+        int size = Integer.parseInt(args[0]);
+        print = Boolean.parseBoolean(args[1]);
+        perm(size);
+        System.out.println();
+        System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime));
+    }
+
     public static void perm(int n) {
         int[] p   = new int[n];     // permutation
         int[] pi  = new int[n];     // inverse permutation
@@ -12,7 +23,8 @@ public class JTP {
             pi[i] = i;
         }
         perm(0, p, pi, dir);
-       System.out.print("   (0 1)\n");
+
+
     }
 
     public static void perm(int n, int[] p, int[] pi, int[] dir) {
@@ -20,15 +32,16 @@ public class JTP {
         // base case - print out permutation
         if (n >= p.length) {
             for (int i = 0; i < p.length; i++)
-                System.out.print(p[i]);
+                if(print)
+                System.out.print(p[i] + " ");
             return;
         }
 
         perm(n+1, p, pi, dir);
         for (int i = 0; i <= n-1; i++) {
-
             // swap
-            System.out.printf("   (%d %d)\n", pi[n], pi[n] + dir[n]);
+            if(print)
+                System.out.println();
             int z = p[pi[n] + dir[n]];
             p[pi[n]] = z;
             p[pi[n] + dir[n]] = n;
@@ -41,8 +54,5 @@ public class JTP {
     }
 
 
-    public static void main(String[] args) {
-        //int n = Integer.parseInt(args[0]);
-        perm(4);
-    }
+
 }

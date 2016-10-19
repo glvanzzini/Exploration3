@@ -6,10 +6,20 @@ import java.util.Arrays;
 public class LP {
 
     public static void main(String[] args){
-        int[] arr = {1,2,3,4};
+        long startTime = System.nanoTime();
+        //System.out.println("Started at: " + startTime);
+        int[] arr = new int[Integer.parseInt(args[0])];
+        for(int i = 0; i < arr.length; i ++){
+            arr[i] = (i);
+        }
+        boolean print = Boolean.parseBoolean(args[1]);
+        if(print)
+            System.out.println(Arrays.toString(arr));
         while(nextPermutation(arr)){
+            if(print)
             System.out.println(Arrays.toString(arr));
         }
+        System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime));
     }
 
     public static boolean nextPermutation(int[] array) {
