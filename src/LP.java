@@ -3,20 +3,20 @@ import java.util.Arrays;
 public class LP {
 
     public static void main(String[] args){
-        long startTime = System.nanoTime();
+        long startTime = System.nanoTime(); //get starting time
         //System.out.println("Started at: " + startTime);
-        int[] arr = new int[Integer.parseInt(args[0])];
-        for(int i = 0; i < arr.length; i ++){
+        int[] arr = new int[Integer.parseInt(args[0])]; //get input size
+        for(int i = 0; i < arr.length; i ++){ //initialize array of values to be permutated
             arr[i] = (i);
         }
-        boolean print = Boolean.parseBoolean(args[1]);
+        boolean print = Boolean.parseBoolean(args[1]); //get print boolean
         if(print)
-            System.out.println(Arrays.toString(arr));
-        while(nextPermutation(arr)){
+            System.out.println(Arrays.toString(arr)); //print the array before its permuated
+        while(nextPermutation(arr)){ //permutate the array until there is no more
             if(print)
-            System.out.println(Arrays.toString(arr));
+            System.out.println(Arrays.toString(arr)); //print the entire array
         }
-        System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime));
+        System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime)); //display the run time
     }
 
     private static boolean nextPermutation(int[] array) {
