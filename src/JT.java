@@ -1,11 +1,8 @@
 /*
- * JTP
- *
- * Description - This program will perform the Johnson-Trotter permutation
- *
- * Inputs -
- *
- */
+* Names: Giampiero Vanzzini & Jacob Murillo
+* Class: CSC 342
+* Program: Johnson-Trotter Permutation
+*/
 
 public class JT {
     private static boolean print = false;
@@ -47,7 +44,7 @@ public class JT {
             return;
         }
 
-        // call recursive call
+        // recursive call
         perm(n+1, p, pi, dir);
 
         for (int i = 0; i <= n-1; i++) {//this for loop does the actual permutation swapping.

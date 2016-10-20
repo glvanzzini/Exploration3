@@ -1,4 +1,9 @@
 import java.util.Arrays;
+/*
+* Names: Giampiero Vanzzini & Jacob Murillo
+* Class: CSC 342
+* Program: Lexicographic Permutation
+* */
 
 public class LP {
 
