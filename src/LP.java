@@ -1,8 +1,5 @@
 import java.util.Arrays;
 
-/**
- * Created by Giampiero on 10/16/2016.
- */
 public class LP {
 
     public static void main(String[] args){
@@ -22,12 +19,12 @@ public class LP {
         System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime));
     }
 
-    public static boolean nextPermutation(int[] array) {
-        // Find longest non-increasing suffix
-        int i = array.length - 1;
-        while (i > 0 && array[i - 1] >= array[i])
-            i--;
+    private static boolean nextPermutation(int[] array) {
+        // this will find the first non-increasing int in array
+
         // Now i is the head index of the suffix
+        int i;
+        for(i = array.length - 1; i > 0 && array[i - 1] >= array[i]; i--){}
 
         // Are we at the last permutation already?
         if (i <= 0)

@@ -1,6 +1,12 @@
-/**
- * Created by Giampiero on 10/16/2016.
+/*
+ * JTP
+ *
+ * Description - This program will perform the Johnson-Trotter permutation
+ *
+ * Inputs -
+ *
  */
+
 public class JT {
     private static boolean print = false;
 
@@ -13,45 +19,47 @@ public class JT {
         System.out.println("Execution finished. Total time: " + (System.nanoTime() - startTime));
     }
 
+    // this method will create the arrays necessary
     public static void initializeVars(int n) {
         int[] perm1   = new int[n];
         int[] invPerm2  = new int[n];
-        int[] direction = new int[n];
+        int[] direction = new int[n]; // -1 is left arrow, and 1 is right arrow
         for (int i = 0; i < n; i++) {
-            direction[i] = -1;
-            perm1[i]  = i;
+            direction[i] = -1; // set all arrows to the left
+            perm1[i]  = i; // number the arrays from 0 to n
             invPerm2[i] = i;
         }
         perm(0, perm1, invPerm2, direction);
-
     }
 
+    // this will call the recursive perm method to perform the
+    //   Johnson-Trotter permutation
     public static void perm(int n, int[] p, int[] pi, int[] dir) {
 
         // base case - print out permutation
         if (n >= p.length) {
             for (int i = 0; i < p.length; i++)
                 if(print)
-                System.out.print(p[i] + " ");
+                    System.out.print(p[i] + " ");
             return;
         }
 
+        // call recursive call
         perm(n+1, p, pi, dir);
+
         for (int i = 0; i <= n-1; i++) {
-            // swap
             if(print)
                 System.out.println();
+            // swap
             int z = p[pi[n] + dir[n]];
             p[pi[n]] = z;
             p[pi[n] + dir[n]] = n;
             pi[z] = pi[n];
             pi[n] = pi[n] + dir[n];
 
+            // call perm again
             perm(n+1, p, pi, dir);
         }
         dir[n] = -dir[n];
     }
-
-
-
 }
